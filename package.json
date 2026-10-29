@@ -1,0 +1,14 @@
+{
+  "name": "shoppybae-voice",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Reusable Gemini Live voice layer (ephemeral-token backend + browser WebSocket client) for Shoppybae",
+  "type": "module",
+  "engines": {
+    "node": ">=22.16.0"
+  },
+  "scripts": {
+    "start": "node --experimental-strip-types src/server.ts",
+    "test": "node --experimental-strip-types --test \"test/*.test.js\""
+  }
+}

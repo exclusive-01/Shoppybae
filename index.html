@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <title>Shoppybae Voice</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main>
+    <h1>Shoppybae Voice</h1>
+    <p class="sub">Voice infrastructure check. This page only tests the live voice connection; shopping features are not connected yet.</p>
+
+    <form id="login" autocomplete="off">
+      <label for="code">Access code</label>
+      <input id="code" name="code" type="password" inputmode="text" autocomplete="off" autocapitalize="off" required>
+      <button type="submit">Unlock</button>
+      <p id="login-msg" class="msg" role="alert"></p>
+    </form>
+
+    <section id="voice" hidden>
+      <div id="status" class="status" data-state="idle" role="status" aria-live="polite">Ready</div>
+      <div class="row">
+        <button id="start" type="button">Start talking</button>
+        <button id="stop" type="button" class="secondary" hidden>End</button>
+      </div>
+      <p class="hint">Use headphones if the assistant keeps interrupting itself. Allow the microphone when your browser asks.</p>
+      <p id="error" class="msg" role="alert"></p>
+      <ul id="transcript" aria-label="Conversation"></ul>
+    </section>
+  </main>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

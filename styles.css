@@ -1,0 +1,68 @@
+:root {
+  --bg: #faf8f5;
+  --fg: #1d1b19;
+  --muted: #6b655e;
+  --card: #ffffff;
+  --line: #e4dfd8;
+  --accent: #0f6b5c;
+  --accent-fg: #ffffff;
+  --danger: #b3261e;
+  --warn: #8a5a00;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #161412;
+    --fg: #f1ede7;
+    --muted: #a39b91;
+    --card: #211e1b;
+    --line: #36322d;
+    --accent: #3fb8a3;
+    --accent-fg: #0b1512;
+    --danger: #ff8a80;
+    --warn: #f0b24a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+main { max-width: 560px; margin: 0 auto; padding: 24px 16px 48px; }
+h1 { font-size: 1.5rem; margin: 0 0 4px; }
+.sub { color: var(--muted); margin: 0 0 20px; }
+label { display: block; font-weight: 600; margin-bottom: 6px; }
+input {
+  width: 100%; padding: 12px; font-size: 1rem; color: var(--fg);
+  background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+}
+button {
+  min-height: 48px; padding: 0 20px; font-size: 1rem; font-weight: 600;
+  color: var(--accent-fg); background: var(--accent);
+  border: 0; border-radius: 10px; cursor: pointer;
+}
+button.secondary { background: transparent; color: var(--fg); border: 1px solid var(--line); }
+button:disabled { opacity: .55; cursor: default; }
+button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+#login button { width: 100%; margin-top: 12px; }
+.row { display: flex; gap: 10px; margin: 14px 0; }
+.row button { flex: 1; }
+.status {
+  padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px;
+  background: var(--card); font-weight: 600;
+}
+.status[data-state="listening"] { border-color: var(--accent); }
+.status[data-state="speaking"] { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, var(--card)); }
+.status[data-state="error"], .status[data-state="expired"] { border-color: var(--danger); }
+.status[data-state="reconnecting"] { border-color: var(--warn); }
+.hint { color: var(--muted); font-size: .9rem; }
+.msg { min-height: 1.4em; color: var(--danger); margin: 8px 0 0; }
+#transcript { list-style: none; padding: 0; margin: 16px 0 0; display: grid; gap: 8px; }
+#transcript li { padding: 10px 12px; border-radius: 10px; background: var(--card); border: 1px solid var(--line); }
+#transcript li.user { margin-left: 24px; }
+#transcript li.model { margin-right: 24px; border-color: color-mix(in srgb, var(--accent) 40%, var(--line)); }
+#transcript li small { display: block; color: var(--muted); font-size: .75rem; text-transform: uppercase; letter-spacing: .04em; }
+@media (prefers-reduced-motion: no-preference) {
+  .status { transition: border-color .2s, background .2s; }
+}
